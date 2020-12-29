@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs'); %>
+
+
+      <h1>Super Squads</h1>
+      <a href='/heroes'>Go Back</a><br>
+      <a href='/create-squad'>Create New Super Squad</a><br>
+
+      <% for(let i=0; i<squads.length; i++){%>
+        <div class="squad">
+          <h2><small>Squad Name:</small><%= squads[i].name%></h2>
+          <h3><small>Squad Name:</small><%= squads[i].hq%></h3>
+          <details>
+            <summary>Active Members: <%= squads[i].heroes.length%></summary>
+            <ul>
+              <% for(let j=0; j<squads[i].heroes.length; j++){%>
+                <li><%= squads[i].heroes[j].name%>(<%= squads[i].heroes[j].overall%>)</li>
+              <% } %>
+            </ul>
+          </details>
+          <h2>Squad Overall: 5402</h2>
+          <form action="/delete-squad/<%= squads[i]._id%>" method="post">
+            <input type="submit" class="link" value="Delete Squads">
+          </form>
+        </div>
+      <% } %>
+
+
+
+
+<%- include('partials/footer.ejs'); %>

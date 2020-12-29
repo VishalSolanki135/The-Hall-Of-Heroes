@@ -17,21 +17,18 @@ const heroSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   description: { type: String, required: true },
   stats: { type: statsSchema, required: true },
-  origin: { type: String, default: "unknown" }
+  origin: { type: String, default: "unknown" },
+  squad: String
 });
 
 
 const squadSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true }
+  name: { type: String, required: true, unique: true },
+  hq: String
 });
-
-
-
-
-
-
 
 
 
 
 mongoose.model('Hero', heroSchema);
+mongoose.model('Squad', squadSchema);

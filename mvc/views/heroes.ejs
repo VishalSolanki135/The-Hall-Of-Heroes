@@ -2,14 +2,25 @@
 
 
       <h1>Welcome to the hall of Heroes</h1>
-      <a href='/create-hero'>Create New Heros</a>
+      <a href="/">Go Back</a><br>
+      <a href='/create-hero'>Create New Heros</a><br>
+      <a href='/squads'>View Super Squads</a><br>
 
 
     <div class="heroes-list">
         <% for(let i = 0; i < heroes.length; i++) { %>
 
             <div class="hero">
+              <div class="d-flex jc-sb flex-align">
                 <h2>Name: <%= heroes[i].name %></h2>
+
+                <% if(heroes[i].squad){%>
+                  <h4><%= heroes[i].squad%></h4>
+                <% } else {%>
+                <% } %>
+              </div>
+
+
                 <h3>Origin: <%= heroes[i].origin %></h3>
                 <p><%= heroes[i].description %></p>
 
@@ -29,15 +40,12 @@
                 %>
 
 
-                <h3>Overall: <%= overall %></h3>
+                <h3>Overall: <%= heroes[i].overall %></h3>
                 <form>
-                  <input type="submit" name="link" value="Update" formaction="/update-hero/<%= heroes[i].id%>" formmethod = "get">
-                  <input type="submit" name="link" value="Delete" formaction="/delete-hero/<%= heroes[i].id%>" formmethod = "post">
-
+                  <input type="submit" name="link" value="Update" formaction="/update-hero/<%= heroes[i]._id%>" formmethod = "get">
+                  <input type="submit" name="link" value="Delete" formaction="/delete-hero/<%= heroes[i]._id%>" formmethod = "post">
                 </form>
-
             </div>
-
         <% } %>
     </div>
 
